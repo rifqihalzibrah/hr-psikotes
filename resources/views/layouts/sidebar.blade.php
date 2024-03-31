@@ -65,44 +65,31 @@
         </li>
 
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Pages</span>
+            <span class="menu-header-text">Admin</span>
         </li>
-        <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
-                <div data-i18n="Dropdown">Dropdown</div>
-            </a>
 
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div data-i18n="Menu">Menu</div>
-                    </a>
-                </li>
-            </ul>
+        <li class="menu-item {{ Request::is('users') ? 'active' : '' }}">
+            <a href="{{ route('users.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div data-i18n="Tables">Users</div>
+            </a>
+        </li>
+
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Menu</span>
+        </li>
+
+        <li class="menu-item {{ Request::is('testsessions') ? 'active' : '' }}">
+            <a href="{{ url()->route('testsessions.index') }}" class="menu-link">
+                <i class='menu-icon tf-icon bx bx-file'></i>
+                <div data-i18n="Analytics">Psikotest</div>
+            </a>
+        </li>
 
         <li class="menu-item {{ Request::is('blank') ? 'active' : '' }}">
             <a href="{{ url()->route('blank') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-file-blank"></i>
                 <div data-i18n="Analytics">Blank</div>
-            </a>
-        </li>
-        </li>
-
-        <!-- Forms & Tables -->
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Forms &amp; Tables</span></li>
-        <!-- Forms -->
-        <li class="menu-item">
-            <a href="#" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-detail"></i>
-                <div data-i18n="Tables">Forms</div>
-            </a>
-        </li>
-        <!-- Tables -->
-        <li class="menu-item">
-            <a href="#" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-table"></i>
-                <div data-i18n="Tables">Tables</div>
             </a>
         </li>
     </ul>
