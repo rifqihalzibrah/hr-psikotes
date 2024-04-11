@@ -30,7 +30,7 @@ class AuthController extends Controller
                 'role' => $user->role,
                 'name' => $user->name,
             ]);
-            return redirect()->intended('home');
+            return redirect()->intended('');
         }
 
         return redirect()->back()->withInput($request->only('username', 'password'))->withErrors(['Invalid credentials']);

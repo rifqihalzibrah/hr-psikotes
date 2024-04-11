@@ -327,7 +327,14 @@ class UserController extends Controller
 
         return DataTables::eloquent($model)
             ->addColumn('action', function ($row) {
-                $setSchedule = ($row->pengajuan->user_pengusul == 1 && $row->pengajuan->atasan_pengusul == 1 && $row->pengajuan->direktur_unit == 1 && $row->pengajuan->hrd == 1 && $row->pengajuan->pm == 1) ? '<a href="' . route('users.setschedule.form', $row->id) . '" class="dropdown-item d-flex align-items-center"><i class="bx bx-time-five me-2"></i>Set Schedule</a>'  : '<div style="cursor: not-allowed;" href="#" class="dropdown-item d-flex align-items-center"><i class="bx bx-time-five me-2"></i>Set Schedule</div>';
+                if ($row->pengajuan === null) {
+                    // Handle the case where $row->pengajuan is null
+                    // For example, you can set $setSchedule to a default value or handle it differently
+                    $setSchedule = '<div style="cursor: not-allowed;" href="#" class="dropdown-item d-flex align-items-center"><i class="bx bx-time-five me-2"></i>Set Schedule</div>';
+                } else {
+                    // Continue with your existing logic
+                    $setSchedule = ($row->pengajuan->user_pengusul == 1 && $row->pengajuan->atasan_pengusul == 1 && $row->pengajuan->direktur_unit == 1 && $row->pengajuan->hrd == 1 && $row->pengajuan->pm == 1) ? '<a href="' . route('users.setschedule.form', $row->id) . '" class="dropdown-item d-flex align-items-center"><i class="bx bx-time-five me-2"></i>Set Schedule</a>'  : '<div style="cursor: not-allowed;" href="#" class="dropdown-item d-flex align-items-center"><i class="bx bx-time-five me-2"></i>Set Schedule</div>';
+                }
                 $actionBtn = '<td class="d-inline-flex align-items-center">
                               <a href="' . route('users.edit', $row->id) . '" class="btn btn-sm btn-icon me-1"><i class="bx bx-edit"></i></a>
                               <form method="POST" action="' . route('users.destroy', $row->id) . '" class="d-inline me-1">
