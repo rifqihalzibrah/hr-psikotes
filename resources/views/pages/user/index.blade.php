@@ -29,8 +29,11 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('users.datatables') }}",
-                    type: 'GET'
+                    method: "POST",
+                    url: '{{ route('users.datatables') }}',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
                 },
                 columns: [
                     // Define your columns here
@@ -46,6 +49,12 @@
                         data: 'email',
                         name: 'email'
                     },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: false,
+                        searchable: false
+                    }
                 ]
             });
         });

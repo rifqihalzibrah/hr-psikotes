@@ -42,4 +42,9 @@ class User extends Authenticatable
     protected $casts = [
         'password' => 'hashed',
     ];
+
+    public function pengajuan()
+    {
+        return $this->belongsTo(DataPengajuanPromosi::class, 'id', 'user_id');
+    }
 }

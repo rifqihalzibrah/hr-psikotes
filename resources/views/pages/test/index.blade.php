@@ -10,12 +10,12 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Table {{ @$title }}</h5>
-            <div>
+            {{-- <div>
                 <a href="{{ $create_route }}" class="btn btn-primary" tabindex="0" aria-controls="DataTables_Table_0"
                     type="button">
                     <span><i class="bx bx-plus me-sm-1"></i> <span class="d-none d-sm-inline-block">Add</span></span>
                 </a>
-            </div>
+            </div> --}}
         </div>
         @include('layouts.table', ['header' => $table_header])
     </div>
@@ -29,22 +29,30 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('testsessions.datatables') }}",
+                    url: "{{ route('test.datatables') }}",
                     type: 'GET'
                 },
                 columns: [
                     // Define your columns here
                     {
-                        data: 'user_id',
-                        name: 'user_id'
+                        data: 'id',
+                        name: 'id'
                     },
                     {
-                        data: 'soal_id',
-                        name: 'soal_id'
+                        data: 'name',
+                        name: 'name'
                     },
                     {
-                        data: 'end_time',
-                        name: 'end_time'
+                        data: 'jumlah_soal',
+                        name: 'jumlah_soal'
+                    },
+                    {
+                        data: 'durasi_soal',
+                        name: 'durasi_soal'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action'
                     },
                 ]
             });
